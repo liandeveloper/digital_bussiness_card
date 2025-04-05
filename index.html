@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FashionDrop - Dropshipping de Ropa</title>
+    <title>ModaExpress - Dropshipping de Ropa</title>
     <style>
+        /* Reset y estilos base */
         * {
             margin: 0;
             padding: 0;
@@ -14,19 +15,21 @@
         
         body {
             background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
             padding: 20px;
         }
         
+        /* Tarjeta principal */
         .business-card {
             background: white;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
             overflow: hidden;
             transition: transform 0.3s ease;
         }
@@ -35,104 +38,116 @@
             transform: translateY(-5px);
         }
         
-        .profile-section {
-            position: relative;
-            text-align: center;
-            padding: 30px 20px 20px;
+        /* Encabezado */
+        .header {
             background: linear-gradient(135deg, #6e8efb, #a777e3);
             color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
         }
         
-        .profile-pic {
+        .profile-img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            object-fit: cover;
             border: 5px solid white;
+            object-fit: cover;
             margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
-        h1 {
-            font-size: 24px;
+        .company-name {
+            font-size: 28px;
             margin-bottom: 5px;
+            font-weight: 700;
         }
         
-        .title {
+        .tagline {
             font-size: 16px;
             opacity: 0.9;
-            margin-bottom: 15px;
+            font-weight: 300;
         }
         
-        .divider {
-            height: 1px;
-            background-color: rgba(255, 255, 255, 0.3);
-            margin: 15px auto;
-            width: 80%;
+        /* Contenido */
+        .content {
+            padding: 30px;
         }
         
-        .info-section {
-            padding: 25px;
+        .section {
+            margin-bottom: 25px;
         }
         
         .section-title {
             font-size: 18px;
-            color: #333;
+            color: #6e8efb;
             margin-bottom: 15px;
-            text-align: center;
-            position: relative;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
         }
         
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(to right, #6e8efb, #a777e3);
-            margin: 8px auto 0;
+        .section-title i {
+            margin-right: 10px;
+            font-size: 20px;
         }
         
+        .description {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        /* Métodos de pago */
         .payment-methods {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 10px;
-            margin-bottom: 25px;
+            margin-top: 15px;
         }
         
         .payment-btn {
-            border: none;
-            background: #f1f1f1;
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
             color: #555;
             cursor: pointer;
             transition: all 0.3s ease;
         }
         
         .payment-btn:hover {
-            background: linear-gradient(to right, #6e8efb, #a777e3);
+            background: #6e8efb;
             color: white;
-            transform: translateY(-2px);
+            border-color: #6e8efb;
         }
         
+        .payment-btn i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        /* Redes sociales */
         .social-links {
             display: flex;
             justify-content: center;
             gap: 15px;
+            margin-top: 20px;
         }
         
         .social-btn {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             text-decoration: none;
             transition: transform 0.3s ease;
         }
@@ -145,106 +160,93 @@
         .instagram { background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
         .whatsapp { background-color: #25D366; }
         .tiktok { background-color: #000000; }
+        .pinterest { background-color: #E60023; }
         
-        .contact-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            margin-top: 20px;
-            background: linear-gradient(to right, #6e8efb, #a777e3);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f9f9f9;
+            color: #777;
+            font-size: 14px;
         }
         
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(107, 126, 251, 0.4);
-        }
-        
-        @media (max-width: 480px) {
-            .business-card {
-                max-width: 100%;
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+                margin: 15px auto;
             }
             
-            .profile-pic {
+            .header {
+                padding: 20px;
+            }
+            
+            .profile-img {
                 width: 100px;
                 height: 100px;
             }
             
-            h1 {
-                font-size: 22px;
+            .company-name {
+                font-size: 24px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .payment-methods {
+                justify-content: center;
             }
         }
     </style>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="business-card">
-        <div class="profile-section">
-            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="FashionDrop" class="profile-pic">
-            <h1>FashionDrop</h1>
-            <div class="title">Dropshipping de Ropa de Moda</div>
-            <div class="divider"></div>
-            <div>¡Moda rápida sin inventario!</div>
-        </div>
-        
-        <div class="info-section">
-            <h2 class="section-title">Métodos de Pago</h2>
-            <div class="payment-methods">
-                <button class="payment-btn">PayPal</button>
-                <button class="payment-btn">Tarjeta</button>
-                <button class="payment-btn">Transferencia</button>
-                <button class="payment-btn">Mercado Pago</button>
-                <button class="payment-btn">Bitcoin</button>
+    <div class="container">
+        <div class="business-card">
+            <div class="header">
+                <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ModaExpress" class="profile-img">
+                <h1 class="company-name">ModaExpress</h1>
+                <p class="tagline">Ropa de tendencia enviada directamente a tus clientes</p>
             </div>
             
-            <h2 class="section-title">Síguenos</h2>
-            <div class="social-links">
-                <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" class="social-btn tiktok"><i class="fab fa-tiktok"></i></a>
+            <div class="content">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-info-circle"></i> Sobre Nosotros</h2>
+                    <p class="description">
+                        Somos tu socio confiable en dropshipping de moda. Ofrecemos las últimas tendencias en ropa con envío directo desde nuestro almacén. Sin inventario, sin preocupaciones. ¡Tú vendes, nosotros nos encargamos del resto!
+                    </p>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-credit-card"></i> Métodos de Pago</h2>
+                    <div class="payment-methods">
+                        <button class="payment-btn"><i class="fab fa-cc-visa"></i> Visa</button>
+                        <button class="payment-btn"><i class="fab fa-cc-mastercard"></i> Mastercard</button>
+                        <button class="payment-btn"><i class="fab fa-cc-paypal"></i> PayPal</button>
+                        <button class="payment-btn"><i class="fab fa-cc-amazon-pay"></i> Amazon Pay</button>
+                        <button class="payment-btn"><i class="fas fa-money-bill-wave"></i> Transferencia</button>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-paper-plane"></i> Contáctanos</h2>
+                    <div class="social-links">
+                        <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-btn tiktok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-btn pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
             </div>
             
-            <button class="contact-btn">Contactar Ahora</button>
+            <div class="footer">
+                <p>© 2023 ModaExpress - Todos los derechos reservados</p>
+            </div>
         </div>
     </div>
-    
-    <!-- Font Awesome para iconos -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    
-    <script>
-        // Efecto al hacer clic en los botones
-        document.querySelectorAll('.payment-btn, .contact-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 200);
-                
-                // Simular acción (en un caso real sería un enlace o función)
-                if(this.classList.contains('contact-btn')) {
-                    alert('¡Gracias por tu interés! Serás redirigido a nuestro formulario de contacto.');
-                }
-            });
-        });
-        
-        // Animación al cargar
-        window.addEventListener('load', function() {
-            const card = document.querySelector('.business-card');
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, 100);
-        });
-    </script>
 </body>
 </html>
